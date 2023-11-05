@@ -1,9 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Agence_de_Voyages.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+var Connectionstring = builder.Configuration.GetConnectionString("conn");
+builder.Services.AddDbContext<ApplicationContext>(
+options => options.UseSqlServer(Connectionstring));
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
