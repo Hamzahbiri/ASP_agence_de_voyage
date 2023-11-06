@@ -3,42 +3,82 @@
 @{
     ViewData["Title"] = "Users Page";
 }
+<div class="d-flex justify-content-center">
+    <h1>User Management</h1>
+</div>
 
-<h1>Index</h1>
 
+<div class="d-inline-flex p-2">
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
+</div>
+<table class="table table-striped table-light table-bordered">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-<tr>
-    <td>
-        <a class="btn-success" asp-action="Edit" asp-route-id="">Edit</a> |
-        <a class="btn-secondary" asp-action="Details" asp-route-id="">Details</a> |
-        <a class="btn-danger" asp-action="Delete" asp-route-id="">Delete</a>
-    </td>
-</tr>
-    @*  @foreach (var item in Model)
+
+        @foreach (var item in Model)
         {
             <tr>
-               <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
-                    <a class="btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a class="btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
-         } *@
+        }
     </tbody>
 </table>
 

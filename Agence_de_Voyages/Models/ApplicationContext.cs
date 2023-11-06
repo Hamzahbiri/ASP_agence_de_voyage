@@ -9,11 +9,8 @@ namespace Agence_de_Voyages.Models
             :base(options)
             
         {
-           
+
         }
-        public DbSet<UsersModel> users{ get; set; }
-
-       
-
+         public DbSet<UsersModel> Users{ get; set; }
     }
 }
