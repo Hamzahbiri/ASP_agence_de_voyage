@@ -96,20 +96,49 @@ namespace Agence_de_Voyages.Controllers
 		// POST: UsersController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
-		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
-		}
+        public ActionResult Edit(int id, UsersModel editedUser)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // Retrieve the existing user to be edited from the database using the id
+                    var userToEdit = context.Users.FirstOrDefault(x => x.Id == id);
 
-		// GET: UsersController/Delete/5
-		public ActionResult Delete(int id)
+                    if (userToEdit == null)
+                    {
+                        // User not found, you may want to handle this case appropriately
+                        return RedirectToAction("Index");
+                    }
+
+                    // Update the user's data with the edited data
+                    userToEdit.Name = editedUser.Name;
+                    userToEdit.Age = editedUser.Age;
+                    userToEdit.Gender = editedUser.Gender;
+                    userToEdit.Email = editedUser.Email;
+                    userToEdit.Phone = editedUser.Phone;
+                    userToEdit.Type = editedUser.Type;
+                    userToEdit.Password = editedUser.Password;
+
+                    // Save the changes to the database
+                    context.SaveChanges();
+
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return View(editedUser);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging
+                Console.WriteLine("Error: " + ex.Message);
+                // Redirect to an error page or action
+                return RedirectToAction("Error");
+            }
+        }
+
+        // GET: UsersController/Delete/5
+        public ActionResult Delete(int id)
 		{
             UsersModel Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
             return View(Users);
