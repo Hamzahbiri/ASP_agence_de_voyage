@@ -54,6 +54,7 @@ namespace Agence_de_Voyages.Controllers
                     if (existingUser != null)
                     {
                         ViewBag.messageerror = "User with the same email already exists.";
+                        
                         return View(Users);
                     }
 

@@ -14,11 +14,20 @@ namespace Agence_de_Voyages.Controllers
         }
 
         public IActionResult Index()
+
         {
-            return View();
+			if (TempData.ContainsKey("SuccessMessage"))
+			{
+				ViewBag.SuccessMessage = TempData["SuccessMessage"];
+			}
+			return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult Sign_up()
         {
             return View();
         }

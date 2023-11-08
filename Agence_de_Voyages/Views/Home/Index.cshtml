@@ -11,7 +11,7 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="oi oi-menu"></span> Menu
 				</button>
-           
+
 				<div class="collapse navbar-collapse" id="ftco-nav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
@@ -20,13 +20,159 @@
 						<li class="nav-item"><a href="~/hotel.html" class="nav-link">Hotel</a></li>
 						<li class="nav-item"><a href="~/blog.html" class="nav-link">Blog</a></li>
 						<li class="nav-item"><a href="~/contact.html" class="nav-link">Contact</a></li>
+						<li class="nav-item">
+						<a asp-action="Sign_up" class="nav-link" id="openModalSign">Sign-up</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link" id="openModal">Login</a>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<!-- END nav -->
+		@section Scripts {
+			<script>
+				// Check if a success message exists
+				var successMessage = '@ViewBag.SuccessMessage';
+				if (successMessage) {
+					// Set the success message in the modal
+					$("#successMessage").text(successMessage);
 
-		<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+					// Show the modal
+					$("#showSuccessModalButton").click();
+				}
+			</script>
+		}
+
+		<!-- Button to trigger the modal -->
+		
+		<!-- Modal for displaying the success message -->
+		<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title d-flex justify-content-center" id="successModalLabel">Success</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body d-flex justify-content-center">
+						<p id="successMessage"></p>
+					</div>
+					<button id="showSuccessModalButton" class="btn btn-success"  data-toggle="modal" data-target="#successModal">
+						Welcome
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- END nav -->
+		<!-- modal -->
+	 <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+
+				<div class="d-flex justify-content-center">
+					<h2>Login</h2>
+				</div>
+				<br>
+            <form id="loginForm">
+                <label class="control-label" for="username">E-mail:</label>
+					<input class="form-control" type="text" id="username" name="username" required>
+                <br>
+					<label class="control-label" for="password">Password:</label>
+					<input class="form-control" type="password" id="password" name="password" required>
+                <br>
+					<div class="d-flex justify-content-center">
+						<button class="btn btn-success mx-2" type="button" id="loginButton">Login</button>
+						<button class="btn btn-secondary mx-2" type="button" id="cancelButton">Cancel</button>
+					</div>
+
+            </form>
+        </div>
+    </div>
+
+		<!-- end modal -->
+		<!-- modal sign_up  -->
+		<div id="modalSign" class="modal">
+			<div class="modal-content">
+				<span class="close" id="closeModalSign">&times;</span>
+
+				<div class="d-flex justify-content-center">
+					<h2>Login</h2>
+				</div>
+				<br>
+				<div class="row p-4">
+				<div class="col-md-4">
+					<form asp-action="Create">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<div class="form-group">
+							<label asp-for="Name" class="control-label">FullName</label>
+							<input asp-for="Name" class="form-control" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Age" class="control-label">Age</label>
+							<input asp-for="Age" type="text" class="form-control" pattern="[0-9]*" inputmode="numeric" />
+							<span asp-validation-for="Age" class="text-danger"></span>
+						</div>
+
+
+
+						<div class="form-group">
+							<label class="control-label">Gender</label>
+							<br />
+							<div class="form-check form-check-inline">
+								<input type="radio" asp-for="Gender" value="Male" class="form-check-input" checked />
+								<label class="form-check-label">Male</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input type="radio" asp-for="Gender" value="Female" class="form-check-input" />
+								<label class="form-check-label">Female</label>
+							</div>
+							<span asp-validation-for="Gender" class="text-danger"></span>
+						</div>
+
+
+						<div class="form-group">
+							<label asp-for="Email" class="control-label"></label>
+							<input asp-for="Email" class="form-control" />
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Phone" class="control-label"></label>
+							<input asp-for="Phone" class="form-control" />
+							<span asp-validation-for="Phone" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="Type">Type</label>
+							<select asp-for="Type" class="form-control">
+								<option value="Client" selected>Client</option>
+								<option value="Admin">Admin</option>
+							</select>
+							<span asp-validation-for="Type" class="text-danger"></span>
+						</div>
+
+
+						<div class="form-group">
+							<label asp-for="Password" class="control-label"></label>
+							<input asp-for="Password" class="form-control" />
+							<span asp-validation-for="Password" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Create" class="btn btn-primary" />
+							<input type="reset" value="Cancel" class="btn btn-primary" />
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		</div>
+
+	<!-- end modal -->
+
+	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
@@ -35,7 +181,7 @@
 						<h1 class="mb-4">Discover Your Favorite Place with Us</h1>
 						<p class="caps">Travel to the any corner of the world, without going around in circles</p>
 					</div>
-					<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+					<a href="https://vimeo.com/198897509" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
 						<span class="fa fa-play"></span>
 					</a>
 				</div>
@@ -198,6 +344,7 @@
 							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 		</section>
 
@@ -450,7 +597,7 @@
 			<div class="container py-md-5">
 				<div class="row py-md-5">
 					<div class="col-md d-flex align-items-center justify-content-center">
-						<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+						<a href="https://vimeo.com/198897509" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
 							<span class="fa fa-play"></span>
 						</a>
 					</div>
