@@ -36,7 +36,7 @@ namespace Agence_de_Voyages.Controllers
         // POST: Sign_upController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateUser(UsersModel Users)
+        public ActionResult CreateUser(User Users)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace Agence_de_Voyages.Controllers
 
                     }
 
-                    UsersModel s = new UsersModel();
+                    User s = new User();
                     s.Name = Users.Name;
                     s.Age = Users.Age;
                     s.Gender = Users.Gender;

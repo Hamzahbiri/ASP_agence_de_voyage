@@ -4,7 +4,7 @@ using System;
 
 namespace Agence_de_Voyages.Models
 {
-	public class UsersModel
+	public class User
 	{
 		[Key]
 		public int Id { get; set; }

@@ -1,0 +1,102 @@
+﻿@model Agence_de_Voyages.Models.Tour
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="d-flex justify-content-center">
+    <h1>Create new tour</h1>
+</div>
+<hr />
+<div class="row p-4">
+    <div class="col-md-4">
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Date_of_departure" class="control-label"></label>
+                <input asp-for="Date_of_departure" type="date" class="form-control" />
+                <span asp-validation-for="Date_of_departure" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Days_number" class="control-label"></label>
+                <input asp-for="Days_number" class="form-control" />
+                <span asp-validation-for="Days_number" class="text-danger"></span>
+            </div>
+
+         
+            <div class="form-group">
+                <label class="control-label" for="Destinations">Destinations</label>
+                <select asp-for="Destinations" class="form-control">
+                    <option value="Paris">Paris</option>
+                    <option value="London">London</option>
+                    <option value="Venice">Venice</option>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="New York">New York</option>
+                    <option value="Tokyo">Tokyo</option>
+                    <option value="Dubai">Dubai</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="San Francisco">San Francisco</option>
+                </select>
+                <span asp-validation-for="Destinations" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Venues" class="control-label"></label>
+                <select asp-for="Venues" class="form-control">
+                    <option value="Eiffel Tower Hotel">Paris - Eiffel Tower Hotel</option>
+                    <option value="Royal Palace Hotel">London - Royal Palace Hotel</option>
+                    <option value="Grand Canal Inn">Venice - Grand Canal Inn</option>
+                    <option value="Plaza del Sol Resort">Madrid - Plaza del Sol Resort</option>
+                    <option value="Bosphorus View Hotel">Istanbul - Bosphorus View Hotel</option>
+                    <option value="Times Square Suites">New York - Times Square Suites</option>
+                    <option value="Sakura Gardens Hotel">Tokyo - Sakura Gardens Hotel</option>
+                    <option value="Burj Khalifa Residences">Dubai - Burj Khalifa Residences</option>
+                    <option value="Colosseum Grand Hotel">Rome - Colosseum Grand Hotel</option>
+                    <option value="Sagrada Familia Suites">Barcelona - Sagrada Familia Suites</option>
+                    <option value="Opera House Retreat">Sydney - Opera House Retreat</option>
+                    <option value="Golden Gate Hotel">San Francisco - Golden Gate Hotel</option>
+                </select>
+
+
+                <span asp-validation-for="Venues" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="p-2">
+    <a asp-action="Index">Back to List</a>
+</div>
+

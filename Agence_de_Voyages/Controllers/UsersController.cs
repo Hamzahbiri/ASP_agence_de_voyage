@@ -17,7 +17,7 @@ namespace Agence_de_Voyages.Controllers
 		public ActionResult Index()
 				
 		{
-			List<UsersModel> Users = context.Users.ToList();
+			List<User> Users = context.Users.ToList();
 
 			return View(Users);
 		}
@@ -26,7 +26,7 @@ namespace Agence_de_Voyages.Controllers
 		public ActionResult Details(int id)
 
 		{
-			UsersModel Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
+			User Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
 
 			return View(Users);
 		}
@@ -40,7 +40,7 @@ namespace Agence_de_Voyages.Controllers
         // POST: UsersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UsersModel Users)
+        public ActionResult Create(User Users)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Agence_de_Voyages.Controllers
                         return View(Users);
                     }
 
-                    UsersModel s = new UsersModel();
+                    User s = new User();
                     s.Name = Users.Name;
                     s.Age = Users.Age;
                     s.Gender= Users.Gender; 
@@ -90,14 +90,14 @@ namespace Agence_de_Voyages.Controllers
         // GET: UsersController/Edit/5
         public ActionResult Edit(int id)
 		{
-            UsersModel Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
+            User Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
             return View(Users);
         }
 
 		// POST: UsersController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, UsersModel editedUser)
+        public ActionResult Edit(int id, User editedUser)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace Agence_de_Voyages.Controllers
         // GET: UsersController/Delete/5
         public ActionResult Delete(int id)
 		{
-            UsersModel Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
+            User Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
             return View(Users);
          
 		}
@@ -153,7 +153,7 @@ namespace Agence_de_Voyages.Controllers
 		{
             try
             {
-                UsersModel Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
+                User Users = context.Users.Where(x => x.Id == id).FirstOrDefault();
                 context.Users.Remove(Users);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
