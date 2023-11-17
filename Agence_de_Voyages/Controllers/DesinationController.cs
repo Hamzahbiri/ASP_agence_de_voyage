@@ -146,9 +146,10 @@ namespace Agence_de_Voyages.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                Console.WriteLine("Error when deleting a Venue: " + e.Message);
+                return RedirectToAction("Error");
             }
         }
     }

@@ -22,7 +22,7 @@ namespace Agence_de_Voyages.Models
 
         [Range(1, 4, ErrorMessage = "Cost Indicator must be between 1 and 4.")]
         [Display(Name = "Cost Indicator")]
-        public  int CostIndicator { get; set; } // indicqtes how expensive are this venues prices on a 1-3 scale
+        public  int CostIndicator { get; set; } // indicates how expensive are this venues prices on a 1-3 scale
 
         [Display(Name = "Free WiFi Available")]
         public bool HasFreeWiFi { get; set; }
