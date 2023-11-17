@@ -18,6 +18,7 @@ namespace Agence_de_Voyages.Models
 
         // Common properties for all venue types
         [Display(Name = "Venue Rating")]
+        [Range(0,5, ErrorMessage ="Rating must be between 0 and 5")]
         public int Rating { get; set; }
 
         [Range(1, 4, ErrorMessage = "Cost Indicator must be between 1 and 4.")]
