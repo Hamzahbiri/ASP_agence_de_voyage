@@ -76,8 +76,7 @@ namespace Agence_de_Voyages.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception for debugging
-                // You can use a logging framework like Serilog or simply log to a file.
+                
                 Console.WriteLine("erreuuuuuuuuuuuuuuuur" + ex.Message);
 
                 // Redirect to an error page or action
@@ -120,7 +119,7 @@ namespace Agence_de_Voyages.Controllers
                     TourToEdit.Image = editedTour.Image;
                     TourToEdit  .Price = editedTour.Price;
 
-                    // Save the changes to the database
+                    
                     context.SaveChanges();
 
                     return RedirectToAction(nameof(Index));
@@ -130,9 +129,8 @@ namespace Agence_de_Voyages.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception for debugging
+
                 Console.WriteLine("Error: " + ex.Message);
-                // Redirect to an error page or action
                 return RedirectToAction("Error");
             }
         }
