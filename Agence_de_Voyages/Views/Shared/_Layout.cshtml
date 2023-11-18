@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -33,13 +35,12 @@
 
       @RenderBody()
 
-    @model string
+  
 
-    @if (!string.IsNullOrEmpty(Model))
-    {
-        <div>Welcome @Model</div>
-    }
-
+    @if (Model is string welcomeMessage)
+{
+    <div>Welcome @welcomeMessage</div>
+}
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="~/js/popper.min.js"></script>

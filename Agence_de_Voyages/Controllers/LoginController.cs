@@ -36,9 +36,17 @@ namespace Agence_de_Voyages.Controllers
 				}
 				else
 				{
-					TempData["messageerror"] = "Welcome " + user.Name.ToString();
+					if (user.Type == "Admin") 
+					{ 
+					TempData["messageerror"] = "Welcome " + user.Name.ToString()+"("+user.Type.ToString()+")";
 					return RedirectToAction("Index", "Home");
-				}
+                    }
+					else
+					{
+                        TempData["messageerror"] = "Welcome " + user.Name.ToString();
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
 			}
 			catch (Exception ex)
 			{

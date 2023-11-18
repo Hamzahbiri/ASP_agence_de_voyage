@@ -20,6 +20,7 @@ namespace Agence_de_Voyages.Controllers
 			List<User> Users = context.Users.ToList();
 
 			return View(Users);
+
 		}
 
 		// GET: UsersController/Details/5
