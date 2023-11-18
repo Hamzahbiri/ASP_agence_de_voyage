@@ -16,7 +16,7 @@ namespace Agence_de_Voyages.Models
 
         [Required(ErrorMessage = "Location field is Required")]
         [MinLength(3, ErrorMessage = "Location contains at least 3 letters")]
-      
+
         public String? Location { get; set; }
 
         [Required(ErrorMessage = "Date_of_departure field is Required")]
@@ -36,7 +36,7 @@ namespace Agence_de_Voyages.Models
         [Required(ErrorMessage = "Price field is Required")]
         public double Price { get; set; }
 
-       
+
         [Required(ErrorMessage = "Image field is Required")]
         public String Image { get; set; }
 

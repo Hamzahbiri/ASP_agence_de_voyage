@@ -20,6 +20,9 @@ namespace Agence_de_Voyages.Controllers
 			{
 				ViewBag.SuccessMessage = TempData["SuccessMessage"];
 			}
+
+			ViewBag.messageerror = TempData["messageerror"];
+		
 			return View();
         }
 
@@ -28,6 +31,10 @@ namespace Agence_de_Voyages.Controllers
             return View();
         }
         public IActionResult Sign_up()
+        {
+            return View();
+        }
+        public IActionResult Login()
         {
             return View();
         }

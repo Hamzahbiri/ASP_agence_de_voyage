@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Agence_de_Voyages</title>
+    <title>@ViewData["Title"]Agence_de_Voyages</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -32,6 +32,13 @@
 <body>
 
       @RenderBody()
+
+    @model string
+
+    @if (!string.IsNullOrEmpty(Model))
+    {
+        <div>Welcome @Model</div>
+    }
 
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
