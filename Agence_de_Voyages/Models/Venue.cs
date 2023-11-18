@@ -44,11 +44,18 @@ namespace Agence_de_Voyages.Models
 
     public enum VenueType
     {
+        [Display(Name = "Hotel")]
         Hotel,
-        Museum,
-        Restaurant,
-        Caffe,
 
+        [Display(Name = "Museum")]
+        Museum,
+
+        [Display(Name = "Restaurant")]
+        Restaurant,
+
+        [Display(Name = "Cafe")]
+        Cafe,
     }
+
 
 }

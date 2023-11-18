@@ -4,11 +4,13 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="d-flex justify-content-center">
+    <h1>Venue Edit</h1>
+</div>
 
-<h4>Venue</h4>
+
 <hr />
-<div class="row">
+<div class="row p-4">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -60,7 +62,7 @@
     </div>
 </div>
 
-<div>
+<div class="p-2">
     <a asp-action="Index">Back to List</a>
 </div>
 

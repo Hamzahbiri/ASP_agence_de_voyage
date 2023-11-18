@@ -4,11 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Destination</h4>
+<div class="d-flex justify-content-center">
+    <h1>Create new Destination</h1>
+</div>
 <hr />
-<div class="row">
+<div class="row p-4">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -27,9 +27,12 @@
                 <select asp-for="AirportCode" asp-items="Html.GetEnumSelectList<Airport>()" class="form-control"></select>
                 <span asp-validation-for="AirportCode" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="LocalTransport" class="control-label"></label>
-                <input asp-for="LocalTransport" class="form-control" />
+                  <div class="form-group">
+                <label class="control-label" for="LocalTransport">LocalTransport</label>
+                <select asp-for="LocalTransport" class="form-control">
+                    <option value="Yes" selected>Yes</option>
+                    <option value="No">No</option>
+                </select>
                 <span asp-validation-for="LocalTransport" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,9 +47,10 @@
     </div>
 </div>
 
-<div>
+<div class="p-2">
     <a asp-action="Index">Back to List</a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

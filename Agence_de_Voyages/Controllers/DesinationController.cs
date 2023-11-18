@@ -16,7 +16,7 @@ namespace Agence_de_Voyages.Controllers
         // GET: DesinationController
         public ActionResult Index()
         {
-            List<Destination> destinationList = new List<Destination>();
+            List<Destination> destinationList = context.Destinations.ToList();
             return View(destinationList);
         }
 

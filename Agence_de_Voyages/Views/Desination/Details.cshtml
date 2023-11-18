@@ -4,10 +4,12 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="d-flex justify-content-center">
+    <h1>Destination Details</h1>
+</div>
 
-<div>
-    <h4>Destination</h4>
+<div class="p-4">
+
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -42,7 +44,7 @@
         </dd>
     </dl>
 </div>
-<div>
+<div class="p-2">
     <a asp-action="Edit" asp-route-id="@Model?.DestinationId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
