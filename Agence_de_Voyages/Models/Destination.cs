@@ -15,7 +15,8 @@ namespace Agence_de_Voyages.Models
         [EnumDataType(typeof(Airport), ErrorMessage = "Invalid airport code.")]
         public string? AirportCode { get; set; }
 
-        [Display(Name = "Local Transport")]
+        [Display(Name = "Additional Local Transport")]
+        [EnumDataType(typeof(LocalTransport), ErrorMessage = "Invalid Means of Transport")]
         public string? LocalTransport { get; set; }
 
         [Required(ErrorMessage = "Price estimate is required.")]
@@ -73,6 +74,14 @@ namespace Agence_de_Voyages.Models
         ATH,
         CPH,
         HEL
+    }
+
+    public enum LocalTransport
+    {
+        Ferry,
+        Train,
+        Bus,
+        Taxi,
     }
 
 }

@@ -31,13 +31,15 @@ namespace Agence_de_Voyages.Models
         // Additional properties specific to certain venue types
         [Range(0, double.MaxValue, ErrorMessage = "Price per night must be a non-negative value.")]
         [Display(Name = "Price Per Night")]
-        public int? PricePerNight { get; set; }  // For hotels 
+        public float? PricePerNight { get; set; }  // For hotels 
 
         [Display(Name = "Cuisine Type")]
         public string? CuisineType { get; set; }  // For restaurants
 
         [Display(Name = "Entry Fee")]
-        public string? EntryFee { get; set; }  // For museums
+        [Range(0, double.MaxValue, ErrorMessage = "Price per night must be a non-negative value.")]
+
+        public float? EntryFee { get; set; }  // For museums
 
        
     }

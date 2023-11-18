@@ -4,6 +4,7 @@ using Agence_de_Voyages.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Agence_de_Voyages.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20231118103531_Venues")]
+    partial class Venues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,11 +70,9 @@ namespace Agence_de_Voyages.Migrations
                     b.Property<int>("Days_number")
                         .HasColumnType("int");
 
-                    b.Property<int>("DestinationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Destinations")
-                        .HasColumnType("int");
+                    b.Property<string>("Destinations")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -88,17 +89,11 @@ namespace Agence_de_Voyages.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("VenueId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Venues")
-                        .HasColumnType("int");
+                    b.Property<string>("Venues")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TourId");
-
-                    b.HasIndex("DestinationId");
-
-                    b.HasIndex("VenueId");
 
                     b.ToTable("Tours");
                 });
@@ -181,25 +176,6 @@ namespace Agence_de_Voyages.Migrations
                     b.HasKey("VenueId");
 
                     b.ToTable("Venues");
-                });
-
-            modelBuilder.Entity("Agence_de_Voyages.Models.Tour", b =>
-                {
-                    b.HasOne("Agence_de_Voyages.Models.Destination", "Destination")
-                        .WithMany()
-                        .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Agence_de_Voyages.Models.Venue", "Venue")
-                        .WithMany()
-                        .HasForeignKey("VenueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Destination");
-
-                    b.Navigation("Venue");
                 });
 #pragma warning restore 612, 618
         }
