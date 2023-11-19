@@ -7,10 +7,12 @@ namespace Agence_de_Voyages.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationContext context)
         {
             _logger = logger;
+            this.context = context;
         }
 
         public IActionResult Index()
@@ -40,6 +42,7 @@ namespace Agence_de_Voyages.Controllers
         }
 		public IActionResult Tour_view()
 		{
+            ViewBag.Tours = context.Tours.ToList();
 			return View();
 		}
 

@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Agence_de_Voyages.Models.Tour>
-
+﻿
 @{
     ViewData["Title"] = "Our tours";
 <body class="bg-image" style="background-image: url('/images/bg_4.jpg'); top: 0; left: 0; width: 100%; height: 100%;">
@@ -13,15 +12,15 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="~/" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="~/about.html" class="nav-link">About</a></li>
+					<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
 					<li class="nav-item">
 							<a asp-action="Tour_view"  class="nav-link">Tours</a>
 					</li>
-					<li class="nav-item"><a href="~/destination.html" class="nav-link">Destination</a></li>
-					<li class="nav-item"><a href="~/hotel.html" class="nav-link">Hotel</a></li>
-					<li class="nav-item"><a href="~/blog.html" class="nav-link">Blog</a></li>
-					<li class="nav-item"><a href="~/contact.html" class="nav-link">Contact</a></li>
+					<li class="nav-item"><a href="/destination.html" class="nav-link">Destination</a></li>
+					<li class="nav-item"><a href="/hotel.html" class="nav-link">Hotel</a></li>
+					<li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
+					<li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
 					<li class="nav-item">
 						<a asp-action="Sign_up" class="nav-link" id="openModalSign">Sign-up</a>
 					</li>
@@ -38,9 +37,9 @@
 	</nav>
 
     <div class="container ">
-                @if (Model != null)
+                @if (ViewBag.Tours != null)
                 {
-                    foreach (var tour in Model)
+                    foreach (var tour in ViewBag.Tours)
                     {                        
                             <div class="col-md-4 mb-3">
                                 <div class="card">
