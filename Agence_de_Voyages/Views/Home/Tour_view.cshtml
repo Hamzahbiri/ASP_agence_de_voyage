@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Agence_de_Voyages.Models.Tour>
+
+@{
+    ViewData["Title"] = "Our tours";
+<body class="bg-image" style="background-image: url('/images/bg_4.jpg'); top: 0; left: 0; width: 100%; height: 100%;">
+
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand">Pacific<span>Travel Agency</span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="~/" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="~/about.html" class="nav-link">About</a></li>
+					<li class="nav-item">
+							<a asp-action="Tour_view"  class="nav-link">Tours</a>
+					</li>
+					<li class="nav-item"><a href="~/destination.html" class="nav-link">Destination</a></li>
+					<li class="nav-item"><a href="~/hotel.html" class="nav-link">Hotel</a></li>
+					<li class="nav-item"><a href="~/blog.html" class="nav-link">Blog</a></li>
+					<li class="nav-item"><a href="~/contact.html" class="nav-link">Contact</a></li>
+					<li class="nav-item">
+						<a asp-action="Sign_up" class="nav-link" id="openModalSign">Sign-up</a>
+					</li>
+					<li class="nav-item">
+						<a asp-action="Login" class="nav-link">Login</a>
+
+					</li>
+					<li class="nav-item"><a href="#" class="nav-link">@ViewBag.messageerror</a></li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+    <div class="container ">
+                @if (Model != null)
+                {
+                    foreach (var tour in Model)
+                    {                        
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <img src="@tour.Image" class="card-img-top" alt="Tour Image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@tour.Name</h5>
+                                        <p class="card-text">Location: @tour.Location</p>
+                                        <p class="card-text">Date of Departure: @tour.Date_of_departure</p>
+                                        <p class="card-text">Days: @tour.Days_number</p>
+                                        <p class="card-text">Destinations: @tour.Destinations</p>
+                                        <p class="card-text">Venues: @tour.Venues</p>
+                                        <p class="card-text">Price: $@tour.Price</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    }
+                }
+                else
+                {
+                <br />   <br />   <br />   <br />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center mt-5">
+                            <h3 class="text-danger">No tours found</h3>
+                        </div>
+                    </div>
+                </div>
+
+                }
+
+</div>
+
+</body>
+}

@@ -16,9 +16,10 @@ namespace Agence_de_Voyages.Controllers
         // GET: ToursController
         public ActionResult Index()
         {
-            List<Tour> Tours = context.Tours.ToList();
-            return View(Tours);
-        }
+			List<Tour> Tours = context.Tours.ToList();
+
+			return View(Tours);
+		}
 
         // GET: ToursController/Details/5
         public ActionResult Details(int id)
