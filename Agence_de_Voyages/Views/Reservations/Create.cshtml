@@ -1,0 +1,89 @@
+﻿@model Agence_de_Voyages.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Tour" class="control-label"></label>
+                <select id ="Tour" asp-for="Tour"   class="form-control">
+                    <option value=""selected hidden disabled>Select a Tour</option>
+                    @foreach (Tour item in ViewBag.Tours)
+                    {
+                        <option value="@item.TourId>" data-price="@item.Price">@item.Name</option>
+                    }
+                </select>
+
+                <span asp-validation-for="SubmissionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                <label asp-for="SubmissionDate" class="control-label"></label>
+                <input  asp-for="SubmissionDate" class="form-control" />
+                <span asp-validation-for="SubmissionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check" hidden>
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsReviewed" /> @Html.DisplayNameFor(model => model.IsReviewed)
+                </label>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="ReviewDate" class="control-label"></label>
+                <input asp-for="ReviewDate" class="form-control" />
+                <span asp-validation-for="ReviewDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepositAmount" class="control-label"></label>
+                <input id="DepositAmount" asp-for="DepositAmount" class="form-control" disabled/>
+                <span asp-validation-for="DepositAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check" hidden>
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDepositPaid" /> @Html.DisplayNameFor(model => model.IsDepositPaid)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var submissionDateInput = document.getElementById('SubmissionDate');
+            
+            // Get today's date in the format 'YYYY-MM-DD'
+            var today = new Date().toISOString().slice(0, 16);
+
+            // Set the input value to today's date
+            submissionDateInput.value = today;
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var selectedTour = document.getElementById('Tour');
+            var depositAmount = document.getElementById('DepositAmount');
+
+            selectedTour.addEventListener('change', function () {
+                // Get the selected tour price
+                var selectedOption = selectedTour.options[selectedTour.selectedIndex];
+                var tourPriceValue = selectedOption.getAttribute('data-price') || 0;
+
+                // Update the price field
+                DepositAmount.value = (parseFloat(tourPriceValue) * 0.25).toFixed(3)
+            });
+        });
+    </script>
+}

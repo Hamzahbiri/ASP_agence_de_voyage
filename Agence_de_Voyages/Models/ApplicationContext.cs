@@ -16,6 +16,8 @@ namespace Agence_de_Voyages.Models
 		
 		public  DbSet<Destination> Destinations { get; set; }   
         public DbSet<Venue> Venues { get; set; }
+        public  DbSet<Reservation> Reservations { get; set; }
+        
 
     }
 }

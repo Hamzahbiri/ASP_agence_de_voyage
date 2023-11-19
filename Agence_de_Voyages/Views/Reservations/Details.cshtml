@@ -1,0 +1,51 @@
+﻿@model Agence_de_Voyages.Models.Reservation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tour.Name)
+        </dt>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SubmissionDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SubmissionDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsReviewed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsReviewed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ReviewDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DepositAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DepositAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDepositPaid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsDepositPaid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ReservationId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
